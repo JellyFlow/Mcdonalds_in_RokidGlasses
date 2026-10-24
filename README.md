@@ -31,15 +31,9 @@
 
 ### 真机演示视频
 
-<video
-  src="https://github.com/JellyFlow/Mcdonalds_in_RokidGlasses/raw/refs/heads/main/docs/videos/Glasses_mdlmp4.mp4"
-  controls
-  width="480">
-</video>
+![1.5.52 真机演示](docs/videos/Glasses_mdlmp4.gif)
 
-[无法播放时点击打开视频](https://github.com/JellyFlow/Mcdonalds_in_RokidGlasses/blob/main/docs/videos/Glasses_mdlmp4.mp4)
-
-视频来自本地真机演示窗口，约 19 秒；展示语音点餐、餐品规格、购物车和支付前确认流程，不代表完整真实交易验收。
+GIF 来自本地真机演示窗口，约 19 秒；展示语音点餐、餐品规格、购物车和支付前确认流程，不代表完整真实交易验收。
 
 下列图片包含个人工程的既有真机记录，以及本次基于1.5.52源码重跑的隔离 Ink / Mock 场景。**真机、Mock 与 Figma 设计稿分开标注**，不是在线演示或公开版全流程真机验收。订单图已遮盖订单号、取餐号及门店信息。
 
