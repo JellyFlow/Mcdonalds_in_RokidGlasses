@@ -56,19 +56,24 @@ npm run check:public
 
 这条路线使用隔离 Mock 测试，不需要眼镜、不连接真实业务账号，也不执行真实业务写操作。
 
-### 2. 本地预览，明确使用 Mock
+### 2. 配置并运行隔离 Mock
 
 另外安装可用的 `aix` CLI。项目曾在 CLI 0.10.1、Ink预览0.18.0及真机Ink0.20.0环境验证；宿主版本差异可能影响按键和语音。
 
 ```bash
+# 在项目根目录执行，无需真实 MCP Token
+npm ci
 npm run configure:mock
 npm run build:device
+npm test
 npm run verify:ink
 ```
 
 此命令运行实际 Ink Page，使用原生键事件、Mock 网关及模拟识别文本；**不代表真实麦克风通过**。自动化脚本默认使用 macOS 的 Chrome 路径，需要该浏览器；其他系统需调整脚本中的 Chrome 启动路径。
 
-`npm run preview` 仅启动普通 Page 预览，不会自动注入测试网关；它不能替代上述 Mock 验证路线。
+`configure:mock` 自动生成被 Git 忽略的 `aiui/lib/credentials.js`、`aiui/agent.json` 和 `local/app-identity.json`，无需手动填写凭证。它会覆盖本地连接配置，但保留已有应用身份。
+
+**Mock Token 不会自动切换业务网关。** 只有上述 `verify:ink` 路线会在临时 Page 中注入 Mock 网关和模拟识别文本；普通 `preview` 以及直接打包、安装均不能当作隔离 Mock。修改模拟数据的位置及恢复真实配置的方法见[开发文档的 Mock 步骤](docs/DEVELOPMENT.md#隔离-mock-配置步骤)。
 
 ### 3. 使用自己的账号构建眼镜应用
 

@@ -55,20 +55,55 @@ npm run preview
 
 本次公开版整理未安装到作者眼镜，原个人应用保持不变。安装你自己构建的版本前，确认配置所属账号和目标设备。
 
-## 测试和演示
+## 隔离 Mock 配置步骤
+
+在项目根目录执行，使用 Node.js >=22.13。Ink 验证还需要可用的 aix CLI、macOS Chrome 和 Python Pillow；该脚本默认使用 macOS Chrome 路径，其他系统需适配浏览器路径。无需真实 MCP Token。
 
 ```bash
+npm ci
+npm run configure:mock
 npm run build:device
 npm test
-npm run typecheck
-npm run check:docs
-npm run check:public
-# 隔离的实际Ink键控验证，需要aix及macOS Chrome
-npm run configure:mock
 npm run verify:ink
 ```
 
-Mock真实写操作只修改隔离测试状态。实际Ink脚本会启动本地预览、用模拟识别文本驱动Page并输出本地产物到被忽略的`artifacts/`。它不能证明实际麦克风、门店网络或系统桌面退出通过。
+1. `configure:mock` 调用 `scripts/configure.mjs --mock`，自动生成测试占位配置，无需手动编辑凭证文件。它会覆盖 `aiui/lib/credentials.js` 和 `aiui/agent.json`，首次创建 `local/app-identity.json`，再次执行保留已有身份。这些文件均被 Git 忽略，不应提交。
+2. `build:device` 生成设备业务 bundle 及契约校验代码；`npm test` 运行隔离业务、Page 和本地配置测试。
+3. `verify:ink` 在临时目录复制 Page，注入 Mock 网关、模拟识别文本和测试场景，再运行实际 Ink 交互检查。原应用 Page 不会因此改为 Mock。截图写入被忽略的 `artifacts/verification/`，结果报告写入 `docs/key-voice-verification.json`；报告是跟踪文件，提交前应核对内容。
+
+### 在哪些文件中修改模拟数据
+
+| 文件 | 修改内容 |
+| --- | --- |
+| `server/src/mock.ts` | 基础 `MockGateway` 返回数据及隔离业务状态，供测试与 Node Mock 服务复用 |
+| `scripts/verify-ink-controls.mjs` | Ink 专项数据覆盖、模拟语音文本、按键流程及断言；部分门店、菜单、订单和优惠券数据会覆盖基础网关结果 |
+| `scripts/configure.mjs` | 本地配置生成逻辑；通常直接使用命令，无需更改 |
+
+调整 Mock 数据时同步核对依赖该数据的断言；所有商品、订单及账号信息使用测试样本，不复制真实用户数据。Mock 写操作只修改隔离测试状态，不调用真实领券、地址新增、下单或取消接口。
+
+### Mock 与真实设备模式的区别
+
+**测试占位 Token 不是网关切换开关。** `configure:mock` 仅生成本地测试配置；普通 `npm run preview` 和 `npm run pack` 不会注入 Mock 网关，用测试占位配置安装的 AIX 也不是隔离 Mock 演示包。请使用 `verify:ink` 执行上述隔离验证。
+
+模拟识别文本不能证明真实麦克风、语音唤醒、真实门店网络或物理系统桌面退出通过。眼镜真实模式需另行验证。
+
+从 Mock 配置切回自己的真实账号时，在本地环境或 `.env.local` 设置自己的 `MCD_MCP_TOKEN`（按需设置 `AMAP_WEB_KEY`），然后执行：
+
+```bash
+npm run configure
+npm run build:device
+npm run pack
+```
+
+不要删除 `local/app-identity.json`；重新配置会保留自己的身份。真实配置及含凭证的 AIX 继续保持私有，不上传 GitHub。
+
+### 其他源码检查
+
+```bash
+npm run typecheck
+npm run check:docs
+npm run check:public
+```
 
 ## 可选Node兼容服务
 
