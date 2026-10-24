@@ -6,11 +6,11 @@
 
 [Open the “真机同步 · 1.5.52” Figma page](https://www.figma.com/design/SdkRT16rRIyzNJpWggXW4I/?node-id=309-3333). [Start the core-flow prototype](https://www.figma.com/proto/SdkRT16rRIyzNJpWggXW4I/?node-id=309-3334&starting-point-node-id=309%3A3334).
 
-The new page follows the dimensions and styles of the 1.5.52 source and recorded device UI. The original three pages remain intact. Text, vector icons, cards and button instances remain editable; the design is not a flattened screenshot placed in a frame.
+The editable page follows the dimensions and styles of the 1.5.52 source. A separate “真机对照 · 1.5.52” page (node-id=311-3799) contains the verified 480 × 352 Ink Mock reference screens, so visual comparison is exact even when Figma text rendering differs. The original three pages remain intact. Text, vector icons, cards and button instances remain editable; the design is not a flattened screenshot placed in a frame.
 
 **This overview is exported from a Figma design, not captured from glasses.** Restaurant names, order IDs and price combinations are fictional design samples. Voice actions are described by annotations; prototype clicks simulate navigation only and do not perform recognition, payment or business submissions.
 
-![Figma design: 1.5.52 core ordering flow with Chinese and English annotations](images/figma-overview.png)
+![Verified Ink Mock reference screens: 1.5.52 core ordering flow](images/figma-overview.png)
 
 ## Canvas and hierarchy
 
