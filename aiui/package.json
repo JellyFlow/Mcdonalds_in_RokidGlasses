@@ -1,0 +1,6 @@
+{
+  "name": "mcdonalds-rokid-agent",
+  "version": "1.2.0",
+  "private": true,
+  "main": "app.js"
+}

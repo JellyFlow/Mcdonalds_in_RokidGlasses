@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "麦当劳 AI 助手",
+    "backgroundColor": "#000000"
+  },
+  "permissions": [
+    "GEOLOCATION",
+    "RECORD_AUDIO"
+  ],
+  "engine": ">=0.17.0",
+  "name": "麦当劳 AI 助手",
+  "description": "Rokid 眼镜直连麦当劳 MCP，语音与按键点餐",
+  "version": "1.5.52"
+}

@@ -1,0 +1,40 @@
+{
+  "name": "mcdonalds-in-rokidglasses",
+  "private": true,
+  "version": "1.5.52",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "configure": "node scripts/configure.mjs",
+    "configure:mock": "node scripts/configure.mjs --mock",
+    "start": "tsx server/src/index.ts",
+    "demo": "MODE=mock DATABASE_PATH=server/data/demo.sqlite tsx server/src/index.ts",
+    "test": "tsx --test server/test/*.test.ts device/test/*.test.ts && node --test scripts/public-config.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:device": "node scripts/build-device.mjs",
+    "pack": "npm run build:device && node scripts/pack-stable.mjs",
+    "preview": "aix preview aiui --dev",
+    "install:device": "node scripts/install-device.mjs",
+    "verify:ink": "node scripts/verify-ink-controls.mjs",
+    "check:public": "node scripts/check-public.mjs",
+    "check:docs": "node scripts/check-docs.mjs",
+    "validate": "npm run typecheck && npm test && npm run check:docs && npm run check:public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@toon-format/toon": "^4.4.0",
+    "ajv": "^8.20.0",
+    "dotenv": "^18.0.8",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "description": "Voice and key driven McDonald MCP ordering assistant for Rokid glasses",
+  "license": "MIT"
+}

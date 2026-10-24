@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": [
+      "node"
+    ],
+    "allowJs": true
+  },
+  "include": [
+    "server/**/*.ts",
+    "scripts/**/*.ts",
+    "shared/**/*.ts",
+    "device/**/*.ts"
+  ]
+}

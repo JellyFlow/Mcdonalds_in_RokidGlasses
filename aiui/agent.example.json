@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "agentId": "${ROKID_AGENT_ID}",
+  "agentName": "麦当劳 AI 助手",
+  "agentDesc": "Rokid 眼镜麦当劳 MCP 点餐助手",
+  "agentPrompt": "",
+  "agentLogo": "",
+  "nativeVersion": "1.5.52",
+  "inkVersion": ">=0.17.0",
+  "permissions": [
+    "GEOLOCATION",
+    "RECORD_AUDIO"
+  ]
+}
