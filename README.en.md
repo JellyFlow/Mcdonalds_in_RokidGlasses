@@ -1,9 +1,7 @@
-[简体中文](README.md) · [English](README.en.md)
-
 <h1 align="center">Mcdonalds_in_RokidGlasses</h1>
 <p align="center"><strong>McDonald’s × Rokid Glasses Ordering Assistant</strong></p>
 <p align="center">
-  <img src="docs/images/device-demo-cover.png" width="480" alt="McDonald’s × Rokid glasses ordering assistant brand poster">
+  <img src="docs/images/device-demo-cover.png" width="720" alt="McDonald’s × Rokid glasses ordering assistant brand poster">
 </p>
 <p align="center">Describe your meal, find a restaurant, review options and prices — keep the final submission under your physical control.</p>
 
