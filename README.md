@@ -3,7 +3,7 @@
 <h1 align="center">Mcdonalds_in_RokidGlasses</h1>
 <p align="center"><strong>麦当劳 × Rokid 眼镜点餐助手</strong></p>
 <p align="center">
-  <img src="docs/images/device-demo-cover.png" width="480" alt="麦当劳 × Rokid 眼镜点餐助手">
+  <img src="docs/images/device-demo-cover.png" width="480" alt="麦当劳 × Rokid 眼镜点餐助手品牌海报">
 </p>
 <p align="center">一句话说出想吃的，眼镜帮你找店、选餐、核价；真正提交，仍由你按键确认。</p>
 <p align="center">
