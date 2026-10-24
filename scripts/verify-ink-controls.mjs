@@ -1,8 +1,9 @@
 import {build} from 'esbuild';
 import {pinRuntime,runtimeVersion} from './preview-runtime.mjs';
 // Actual Ink Page + native keyboard events; only the gateway and ASR transcript source are Mock.
-import {mkdtempSync,cpSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,mkdirSync,cpSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {spawn,execFileSync} from 'node:child_process';import {createServer} from 'node:http';
+mkdirSync('artifacts/verification',{recursive:true});
 const dir=mkdtempSync(join(tmpdir(),'mcd-ink-keys-')),snapshots=[],checks=[];let html='',chrome,ws;let seq=0;const pending=new Map();
 const server=createServer(async(req,res)=>{
  if(req.url==='/snapshot'){let body='';for await(const c of req)body+=c;snapshots.push(JSON.parse(body));res.end('ok');return;}
