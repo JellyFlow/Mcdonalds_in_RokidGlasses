@@ -1,3 +1,5 @@
+[简体中文](README.md) · [English](README.en.md)
+
 <h1 align="center">Mcdonalds_in_RokidGlasses</h1>
 <p align="center"><strong>麦当劳 × Rokid 眼镜点餐助手</strong></p>
 <p align="center">一句话说出想吃的，眼镜帮你找店、选餐、核价；真正提交，仍由你按键确认。</p>
@@ -27,13 +29,17 @@
 
 ## 界面演示
 
-下列图片来自个人工程的既有验证。**真机和 Mock 分开标注**，不是在线演示或公开版全流程验收。订单图已遮盖订单号、取餐号及门店信息。
+下列图片包含个人工程的既有真机记录，以及本次基于1.5.52源码重跑的隔离 Ink / Mock 场景。**真机、Mock 与 Figma 设计稿分开标注**，不是在线演示或公开版全流程真机验收。订单图已遮盖订单号、取餐号及门店信息。
 
 <table>
 <tr><td align="center"><img src="docs/images/home-device.png" width="360" alt="真机首页，原应用1.5.46"><br>真机首页 · 原应用1.5.46</td><td align="center"><img src="docs/images/menu-mock.png" width="360" alt="隔离Ink菜单，每批最多五项"><br>隔离 Ink / Mock · 语音选餐与批次</td></tr>
 <tr><td align="center"><img src="docs/images/cart-mock.png" width="360" alt="隔离Ink购物车，三个底部入口"><br>隔离 Ink / Mock · 购物车操作</td><td align="center"><img src="docs/images/undo-mock.png" width="360" alt="隔离Ink清空后可撤销"><br>隔离 Ink / Mock · 清空后撤销</td></tr>
 <tr><td align="center"><img src="docs/images/customize-mock.png" width="360" alt="隔离Ink规格多选勾选"><br>隔离 Ink / Mock · 规格多选</td><td align="center"><img src="docs/images/order-device-redacted.png" width="360" alt="真机订单状态，已脱敏"><br>真机订单状态 · 原应用1.5.52，已脱敏</td></tr>
+<tr><td align="center"><img src="docs/images/fulfillment-mock.png" width="360" alt="1.5.52 Mock就餐方式与内嵌监听"><br>隔离 Ink / Mock · 1.5.52 · 就餐方式</td><td align="center"><img src="docs/images/stores-mock.png" width="360" alt="1.5.52 Mock完整地址门店列表"><br>隔离 Ink / Mock · 1.5.52 · 门店地址与编号</td></tr>
+<tr><td align="center"><img src="docs/images/meal-mock.png" width="360" alt="1.5.52 Mock餐品详情与数量"><br>隔离 Ink / Mock · 1.5.52 · 餐品详情</td><td align="center"><img src="docs/images/review-mock.png" width="360" alt="1.5.52 Mock确认页商品小计与同行偏好"><br>隔离 Ink / Mock · 1.5.52 · 算价确认样本</td></tr>
 </table>
+
+可编辑设计稿及流程总览见[真机同步设计说明](docs/DESIGN.md)。画面内文案保留中文；英文项目说明见[English README](README.en.md)。
 
 完整操作路线见[演示指南](docs/DEMO.md)。Mock 中的餐品、价格和状态是隔离样本，不能据此判断真实可售性或报价。
 
