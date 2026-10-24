@@ -31,7 +31,13 @@
 
 ### 真机演示视频
 
-[观看 1.5.52 真机演示视频（MP4）](docs/videos/Glasses_mdlmp4.mp4)
+<video
+  src="https://github.com/JellyFlow/Mcdonalds_in_RokidGlasses/raw/refs/heads/main/docs/videos/Glasses_mdlmp4.mp4"
+  controls
+  width="480">
+</video>
+
+[无法播放时点击打开视频](https://github.com/JellyFlow/Mcdonalds_in_RokidGlasses/blob/main/docs/videos/Glasses_mdlmp4.mp4)
 
 视频来自本地真机演示窗口，约 19 秒；展示语音点餐、餐品规格、购物车和支付前确认流程，不代表完整真实交易验收。
 

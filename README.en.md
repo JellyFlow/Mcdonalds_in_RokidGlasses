@@ -25,7 +25,13 @@ When taking out a phone is inconvenient, say what you want and review the detail
 
 ### Device demo video
 
-[Watch the 1.5.52 device demo (MP4)](docs/videos/Glasses_mdlmp4.mp4)
+<video
+  src="https://github.com/JellyFlow/Mcdonalds_in_RokidGlasses/raw/refs/heads/main/docs/videos/Glasses_mdlmp4.mp4"
+  controls
+  width="480">
+</video>
+
+[Open the video page if inline playback is unavailable](https://github.com/JellyFlow/Mcdonalds_in_RokidGlasses/blob/main/docs/videos/Glasses_mdlmp4.mp4)
 
 This approximately 19-second clip comes from a local device demo window. It shows voice ordering, meal options, cart handling and the pre-payment review flow; it is not evidence of a complete live transaction acceptance.
 
