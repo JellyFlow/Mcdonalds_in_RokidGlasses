@@ -2,6 +2,9 @@
 
 <h1 align="center">Mcdonalds_in_RokidGlasses</h1>
 <p align="center"><strong>McDonald’s × Rokid Glasses Ordering Assistant</strong></p>
+<p align="center">
+  <img src="docs/images/device-demo-cover.png" width="480" alt="McDonald’s × Rokid glasses ordering assistant">
+</p>
 <p align="center">Describe your meal, find a restaurant, review options and prices — keep the final submission under your physical control.</p>
 
 A voice and key driven ordering application for **Rokid glasses users** and **McDonald’s MCP developers**. Its native AIUI Page uses a **480 × 352** canvas. In live mode, the glasses connect directly to McDonald’s MCP; an always-on computer is unnecessary. **Payment is completed on the phone through McDonald’s.**
@@ -25,7 +28,9 @@ When taking out a phone is inconvenient, say what you want and review the detail
 
 ### Device demo video
 
-![1.5.52 device demo](docs/videos/Glasses_mdlmp4.gif)
+<p align="center">
+  <img src="docs/videos/Glasses_mdlmp4.gif" width="480" alt="1.5.52 device demo">
+</p>
 
 This approximately 19-second GIF comes from a local device demo window. It shows voice ordering, meal options, cart handling and the pre-payment review flow; it is not evidence of a complete live transaction acceptance.
 
@@ -40,6 +45,19 @@ This approximately 19-second GIF comes from a local device demo window. It shows
 </table>
 
 The [editable Figma design and flow overview](docs/DESIGN.en.md) align with the current implementation. Screen labels remain Chinese to match the device UI; this English documentation does not imply an English speech-recognition mode. See the [demo guide (Chinese)](docs/DEMO.md) for the review route.
+
+## Project structure
+
+```text
+aiui/       Native AIUI Page, page assets and UI logic
+device/     Device entry point, gateway and local storage
+shared/     Domain types, menus, orders and view state
+server/     MCP adapter and isolated Mock service
+scripts/    Configuration, build, packaging and Ink verification
+docs/       PRD, design notes, verification records and public media
+```
+
+`local/`, `artifacts/` and `node_modules/` are local configuration or build directories; they are not required public runtime files.
 
 ## Quick start
 

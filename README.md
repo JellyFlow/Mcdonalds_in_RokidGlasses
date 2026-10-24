@@ -2,6 +2,9 @@
 
 <h1 align="center">Mcdonalds_in_RokidGlasses</h1>
 <p align="center"><strong>麦当劳 × Rokid 眼镜点餐助手</strong></p>
+<p align="center">
+  <img src="docs/images/device-demo-cover.png" width="480" alt="麦当劳 × Rokid 眼镜点餐助手">
+</p>
 <p align="center">一句话说出想吃的，眼镜帮你找店、选餐、核价；真正提交，仍由你按键确认。</p>
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
@@ -31,7 +34,9 @@
 
 ### 真机演示视频
 
-![1.5.52 真机演示](docs/videos/Glasses_mdlmp4.gif)
+<p align="center">
+  <img src="docs/videos/Glasses_mdlmp4.gif" width="480" alt="1.5.52 真机演示">
+</p>
 
 GIF 来自本地真机演示窗口，约 19 秒；展示语音点餐、餐品规格、购物车和支付前确认流程，不代表完整真实交易验收。
 
@@ -48,6 +53,19 @@ GIF 来自本地真机演示窗口，约 19 秒；展示语音点餐、餐品规
 可编辑设计稿及流程总览见[真机同步设计说明](docs/DESIGN.md)。画面内文案保留中文；英文项目说明见[English README](README.en.md)。
 
 完整操作路线见[演示指南](docs/DEMO.md)。Mock 中的餐品、价格和状态是隔离样本，不能据此判断真实可售性或报价。
+
+## 项目文件结构
+
+```text
+aiui/       Native AIUI Page、页面资源与界面逻辑
+device/     设备运行入口、网关和本地存储
+shared/     业务类型、菜单、订单和视图状态
+server/     MCP 适配与隔离 Mock 服务
+scripts/    配置、构建、打包和 Ink 验证脚本
+docs/       PRD、设计说明、验证记录和公开演示素材
+```
+
+`local/`、`artifacts/` 和 `node_modules/` 是本地配置或构建目录，不属于公开运行必需文件。
 
 ## 快速开始
 
