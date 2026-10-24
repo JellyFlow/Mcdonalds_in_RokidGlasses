@@ -23,6 +23,12 @@ When taking out a phone is inconvenient, say what you want and review the detail
 
 ## UI gallery
 
+### Device demo video
+
+[Watch the 1.5.52 device demo (MP4)](docs/videos/Glasses_mdlmp4.mp4)
+
+This approximately 19-second clip comes from a local device demo window. It shows voice ordering, meal options, cart handling and the pre-payment review flow; it is not evidence of a complete live transaction acceptance.
+
 **Device captures, isolated Ink / Mock runs and Figma designs are different evidence.** The device images below are historical captures of the personal application, not proof that this public edition has passed a complete live transaction. Sensitive order data is redacted. Mock prices and products are fictional test samples.
 
 <table>
