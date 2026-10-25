@@ -9,7 +9,7 @@ A voice and key driven ordering application for **Rokid glasses users** and **Mc
 
 This is an independently developed contest project, **not an official McDonald’s or Rokid product**. Availability, prices, coupons and restaurant capabilities depend on live official responses. Original code is [MIT licensed](LICENSE); brands and other assets retain their owners’ rights.
 
-[UI gallery](#ui-gallery) · [Quick start](#quick-start) · [Voice examples](#voice-examples) · [Architecture](#architecture) · [MCP integration (Chinese)](MCP_INTEGRATION.md) · [Verification](docs/VERIFICATION.md) · [Design](docs/DESIGN.en.md)
+[UI gallery](#ui-gallery) · [Quick start](#quick-start) · [Voice examples](#voice-examples) · [Architecture](#architecture) · [MCP integration (Chinese)](MCP_INTEGRATION.md) · [Verification](docs/verification/VERIFICATION.md) · [Design](docs/DESIGN.en.md)
 
 ## Why glasses?
 
@@ -47,12 +47,36 @@ The [editable Figma design and flow overview](docs/DESIGN.en.md) align with the 
 ## Project structure
 
 ```text
-aiui/       Native AIUI Page, page assets and UI logic
-device/     Device entry point, gateway and local storage
-shared/     Domain types, menus, orders and view state
-server/     MCP adapter and isolated Mock service
-scripts/    Configuration, build, packaging and Ink verification
-docs/       PRD, design notes, verification records and public media
+aiui/
+├── pages/index/index.ink        Native AIUI Page entry
+├── components/                  Page layout, controls and presentation logic
+├── runtime/                     Device bundle, location and runtime adapters
+├── config/                      Configuration examples and local credentials
+├── assets/                      Brand, icons and third-party notices
+├── app.js / app.json            AIUI application entry configuration
+device/
+├── gateway/                     MCP gateway, transport and requests
+├── storage/                     Device storage and submission journal
+├── validation/                  Generated contract validators
+├── entry.ts                     Device bundle entry
+└── test/                        Device and gateway tests
+server/
+├── api/                         HTTP entry
+├── domain/                      Server domain adapters
+├── mock/                        Isolated Mock gateway and fixtures
+├── service/                     Node orchestration and MCP adapter
+├── db/                          Database access
+├── types/                       Server types
+└── test/                        Server tests
+shared/
+├── domain/                      Domain models, types and storage contracts
+├── menu/                        Menu and meal matching
+├── order/                       Order intent
+├── contracts/                   MCP result and service contracts
+├── view/                        Page view state
+└── platform/                    Platform compatibility helpers
+scripts/                         Configuration, build, packaging and Ink checks
+docs/                            PRD, design notes, verification and public media
 ```
 
 `local/`, `artifacts/` and `node_modules/` are local configuration or build directories; they are not required public runtime files.
@@ -88,11 +112,11 @@ npm test
 npm run verify:ink
 ```
 
-`configure:mock` generates ignored local files: `aiui/lib/credentials.js`, `aiui/agent.json` and `local/app-identity.json`. It overwrites the local connection configuration and preserves an existing application identity.
+`configure:mock` generates ignored local files: `aiui/config/credentials.js`, `aiui/agent.json` and `local/app-identity.json`. It overwrites the local connection configuration and preserves an existing application identity.
 
 **A Mock token does not switch the gateway.** Only `verify:ink` injects the Mock gateway and simulated transcripts into a temporary Page. Ordinary `preview`, packaging and device installation do not create an isolated Mock application. Simulated transcripts do not verify a real microphone or wake word.
 
-Change base Mock responses in `server/src/mock.ts`; change Ink-specific data overrides, transcripts and assertions in `scripts/verify-ink-controls.mjs`. Screenshots are generated under ignored `artifacts/verification/`. The tracked report is `docs/key-voice-verification.json`; inspect it before committing. More details are in the [development guide (Chinese)](docs/DEVELOPMENT.md#隔离-mock-配置步骤).
+Change base Mock responses in `server/mock/index.ts`; change Ink-specific data overrides, transcripts and assertions in `scripts/verify-ink-controls.mjs`. Screenshots are generated under ignored `artifacts/verification/`. The local report is generated at `docs/verification/key-voice-verification.json`; inspect it locally before committing. More details are in the [development guide (Chinese)](docs/DEVELOPMENT.md#隔离-mock-配置步骤).
 
 ### 3. Build privately with your own account
 
@@ -151,7 +175,7 @@ The actual server is `https://mcp.mcd.cn`, authenticated using `Authorization: B
 
 ## Verification and limitations
 
-The source baseline is 1.5.52. The public edition passed 189 business/Page tests plus 3 configuration tests, type checks, clean-checkout builds and 166 isolated Ink checks; the [verification record (Chinese)](docs/VERIFICATION.md) defines their scope.
+The source baseline is 1.5.52. The public edition passed 189 business/Page tests plus 3 configuration tests, type checks, clean-checkout builds and 166 isolated Ink checks; the [verification record (Chinese)](docs/verification/VERIFICATION.md) defines their scope.
 
 - Historical device captures and wearer feedback cover parts of queries, voice selection and cart operations; they are not a complete public-edition live transaction acceptance.
 - Intercepting `window.close()` in a browser does not prove physical desktop exit on glasses.

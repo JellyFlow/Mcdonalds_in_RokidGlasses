@@ -1,11 +1,11 @@
-import {clone, canonical, defaultRuntime, type Runtime} from './platform.js';
-import type {Event,Gateway,Obj,Screen,Session} from './types.js';
-import {UserError} from './types.js';
-import type {StateStore} from './store.js';
-import {array,context,fingerprint,initialDetail,lineItem,money,plain,priceArgs,roundChoices,toggleMod,takeWayLabel,cancelReasons,orderCancelled,orderPendingPayment} from './domain.js';
-import {menuBatch} from './menu.js';
-import {view} from './view.js';
-import {parseOrderIntent,exactRequestedMeals} from './order-intent.js';
+import {clone, canonical, defaultRuntime, type Runtime} from '../platform/index.js';
+import type {Event,Gateway,Obj,Screen,Session} from '../domain/types.js';
+import {UserError} from '../domain/types.js';
+import type {StateStore} from '../domain/store.js';
+import {array,context,fingerprint,initialDetail,lineItem,money,plain,priceArgs,roundChoices,toggleMod,takeWayLabel,cancelReasons,orderCancelled,orderPendingPayment} from '../domain/index.js';
+import {menuBatch} from '../menu/index.js';
+import {view} from '../view/index.js';
+import {parseOrderIntent,exactRequestedMeals} from '../order/index.js';
 export class Service {
  private locks=new Map<string,Promise<any>>();
  // Undo is deliberately process-local; no deleted product snapshot enters device storage.

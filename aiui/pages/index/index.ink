@@ -3,13 +3,13 @@
 </script>
 <script setup>
 import wx from 'wx';
-import { resolveLocation } from '../../lib/amap.js';
-import { MCP_TOKEN, AMAP_WEB_KEY } from '../../lib/credentials.js';
-import { listLayout, storeRows, menuRows, couponView, orderView } from '../../lib/layout.js';
-import { controlsFor, spokenNumber } from '../../lib/controls.js';
-import { Service, DeviceStore, DeviceGateway } from '../../lib/device.js';
+import { resolveLocation } from '../../runtime/amap.js';
+import { MCP_TOKEN, AMAP_WEB_KEY } from '../../config/credentials.js';
+import { listLayout, storeRows, menuRows, couponView, orderView } from '../../components/layout.js';
+import { controlsFor, spokenNumber } from '../../components/controls.js';
+import { Service, DeviceStore, DeviceGateway } from '../../runtime/device.js';
 import { LanguageModel } from 'language-model';
-import { presentation } from '../../lib/presentation.js';
+import { presentation } from '../../components/presentation.js';
 export default {
   data: {
     view: { title: '麦当劳 AI 助手', summary: '直连麦当劳，开始点餐', screen: 'home', rows: [], actions: [] },

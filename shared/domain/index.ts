@@ -1,4 +1,4 @@
-import {clone,canonical} from './platform.js';
+import {clone,canonical} from '../platform/index.js';
 import type {Obj,Session} from './types.js';
 import {UserError} from './types.js';
 export function yuan(value:any):number {

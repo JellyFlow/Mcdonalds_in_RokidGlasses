@@ -1,11 +1,11 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {DeviceStore} from '../storage.js';
-import {Service} from '../../shared/service.js';
-import {MockGateway} from '../../server/src/mock.js';
-import {InkTransport,EventParser} from '../transport.js';
-import {DeviceGateway} from '../gateway.js';
-import {contracts} from '../validators.js';
+import {DeviceStore} from '../storage/store.js';
+import {Service} from '../../shared/contracts/service.js';
+import {MockGateway} from '../../server/mock/index.js';
+import {InkTransport,EventParser} from '../gateway/transport.js';
+import {DeviceGateway} from '../gateway/index.js';
+import {contracts} from '../validation/validators.js';
 class MemoryStorage {
  data=new Map<string,any>();fail=false;drop=false;
  getStorageSync(k:string){return structuredClone(this.data.get(k));}

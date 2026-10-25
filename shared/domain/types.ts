@@ -1,4 +1,4 @@
-import type {OrderDraft} from './order-intent.js';
+import type {OrderDraft} from '../order/index.js';
 export type Obj = Record<string, any>;
 export type Event = { type: string; id?: string; value?: any; revision?: number; actionId?: string };
 export type Screen = 'home'|'fulfillment'|'location'|'addresses'|'address-entry'|'address-confirm'|'stores'|'menu'|'meal'|'customize'|'cart'|'coupon-select'|'coupon-confirm'|'tableware'|'time'|'reservation'|'remark'|'review'|'payment'|'order-status'|'orders'|'wallet'|'claim-confirm'|'claim-result'|'nutrition'|'account'|'campaign'|'error'|'uncertain'|'cancel-reasons'|'cancel-confirm'|'cart-change-confirm';

@@ -1,8 +1,8 @@
 import {config} from 'dotenv';
-import {Store} from './db.js';
-import {McpGateway} from './mcp.js';
-import {MockGateway} from './mock.js';
-import {Service} from './service.js';
+import {Store} from '../db/index.js';
+import {McpGateway} from '../service/mcp.js';
+import {MockGateway} from '../mock/index.js';
+import {Service} from '../service/index.js';
 import {httpServer} from './http.js';
 config({path:'server/.env',quiet:true});
 const mode=process.env.MODE??'live';if(!['live','mock'].includes(mode))throw new Error('MODE must be live or mock');

@@ -9,8 +9,8 @@
   "scripts": {
     "configure": "node scripts/configure.mjs",
     "configure:mock": "node scripts/configure.mjs --mock",
-    "start": "tsx server/src/index.ts",
-    "demo": "MODE=mock DATABASE_PATH=server/data/demo.sqlite tsx server/src/index.ts",
+    "start": "tsx server/api/index.ts",
+    "demo": "MODE=mock DATABASE_PATH=server/data/demo.sqlite tsx server/api/index.ts",
     "test": "tsx --test server/test/*.test.ts device/test/*.test.ts && node --test scripts/public-config.test.mjs",
     "typecheck": "tsc --noEmit",
     "build:device": "node scripts/build-device.mjs",

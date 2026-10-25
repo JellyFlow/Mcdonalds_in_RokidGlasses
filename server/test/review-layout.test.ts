@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {view} from '../../shared/view.js';
-import type {Session} from '../../shared/types.js';
+import {view} from '../../shared/view/index.js';
+import type {Session} from '../../shared/domain/types.js';
 function session():Session{return {id:'test',revision:0,mode:'mock',screen:'review',history:[],fulfillment:'pickup',stores:[],addresses:[],addressDraft:{},addressStep:0,meals:[],cart:[{id:'a',name:'巨无霸',item:{productCode:'a',quantity:2}}],coupons:[],needTableware:false,remark:'',orders:[],takeWayCode:'pack',price:{price:5300,takeWayList:[{code:'pack',title:'打包带走'}],productList:[{productCode:'a',quantity:2,subtotal:5300}]}};}
 test('review shows quoted line subtotal and one combined preference row',()=>{
  const s=session(),rows=view(s).presentation!.receipt;

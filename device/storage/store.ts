@@ -1,6 +1,6 @@
-import {clone,canonical} from '../shared/platform.js';
-import type {Session} from '../shared/types.js';
-import type {StateStore,Submission} from '../shared/store.js';
+import {clone,canonical} from '../../shared/platform/index.js';
+import type {Session} from '../../shared/domain/types.js';
+import type {StateStore,Submission} from '../../shared/domain/store.js';
 export interface Storage {getStorageSync(key:string):any;setStorageSync(key:string,value:any):void}
 const KEY='mcd.device.v1', MARKER='mcd.device.initialized.v1';
 type State={version:1;token:string;accountId?:string;sessions:Record<string,Session>;submissions:Record<string,Submission>;latest?:string};

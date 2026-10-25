@@ -1,9 +1,10 @@
 import {execFileSync} from 'node:child_process';
-import {readFileSync} from 'node:fs';
+import {readFileSync,existsSync} from 'node:fs';
 const banned=String.fromCodePoint(0x5168,0x5f69);
 const paths=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8'}).split('\0').filter(Boolean);
 const errors=[];
 for(const p of new Set(paths)){
+ if(!existsSync(p))continue;
  if(/(^|\/)(?:node_modules|local|\.git|\.aix)(?:\/|$)|(^|\/)(?:\.env|\.env\.local|credentials\.js|agent\.json)$|\.(?:aix|zip|sqlite|log)$/.test(p))errors.push('Private/generated path: '+p);
  const b=readFileSync(p),s=b.toString('utf8');
  if(s.includes(banned))errors.push('Disallowed wording: '+p);

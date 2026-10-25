@@ -32,7 +32,7 @@
 | `query-my-coupons` | 用户优惠券 | 只读，列表支持语音选择详情 |
 | `query-my-account` | 账户与积分信息 | 只读查询 |
 
-共享白名单见 `shared/mcp-result.ts`，工具契约快照见 `docs/mcp-tool-contracts.json`。快照只用于验证，平台工具返回发生变化时可能需要更新，不保证所有账号都具备所有能力。未实现积分抽奖，不能因为契约快照包含该Tool就自动调用。
+共享白名单见 `shared/contracts/mcp-result.ts`，工具契约快照见 `docs/mcp-tool-contracts.json`。快照只用于验证，平台工具返回发生变化时可能需要更新，不保证所有账号都具备所有能力。未实现积分抽奖，不能因为契约快照包含该Tool就自动调用。
 
 ## 从用户需求到页面
 
@@ -83,6 +83,6 @@ sequenceDiagram
 
 MCP使眼镜能够基于用户自己的真实门店、菜单、优惠及订单完成查询和准备操作，而非展示固定假菜单。语音减少逐层输入，视觉核对与确认键保留用户控制。
 
-发布验证使用隔离Mock覆盖全部写操作。既有真机图片与反馈仅证明相应时刻的部分场景，不证明本次公开版真实下单、支付或取消已通过。详细边界见 [验证记录](docs/VERIFICATION.md)。
+发布验证使用隔离Mock覆盖全部写操作。既有真机图片与反馈仅证明相应时刻的部分场景，不证明本次公开版真实下单、支付或取消已通过。详细边界见 [验证记录](docs/verification/VERIFICATION.md)。
 
 官方资料：[MCP平台](https://open.mcd.cn/mcp) · [官方使用指南](https://github.com/M-China/mcd-mcp-server)。

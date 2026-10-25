@@ -1,12 +1,12 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 import { createRequire } from 'node:module';
-import type { Gateway, Obj } from './types.js';
-import { UserError } from './types.js';
+import type { Gateway, Obj } from '../types/index.js';
+import { UserError } from '../types/index.js';
 const require = createRequire(import.meta.url);
 const Ajv = require('ajv');
-export {ALLOWED,WRITES,unwrap} from '../../shared/mcp-result.js';
-import {ALLOWED,WRITES,unwrap} from '../../shared/mcp-result.js';
+export {ALLOWED,WRITES,unwrap} from '../../shared/contracts/mcp-result.js';
+import {ALLOWED,WRITES,unwrap} from '../../shared/contracts/mcp-result.js';
 export class McpGateway implements Gateway {
  mode='live' as const;
  private client?:Client; private connecting?:Promise<void>; private catalog:Obj[]=[];

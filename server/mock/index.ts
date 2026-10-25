@@ -1,5 +1,5 @@
-import {clone} from '../../shared/platform.js';
-import type { Gateway, Obj } from './types.js';
+import {clone} from '../../shared/platform/index.js';
+import type { Gateway, Obj } from '../types/index.js';
 const stores=[{storeCode:'12345',beCode:'56789',storeName:'麦当劳人民广场餐厅',address:'上海市黄浦区南京西路 88 号',distance:'350米',businessStatus:true,reservation:true,reservationTimeOptions:[{date:'2030-10-18',reservationOptionText:'午餐(10:30至15:29)'}]}];
 const meals:Obj={burger:{name:'板烧鸡腿堡套餐',currentPrice:'29.9',image:'/assets/chicken.png'},bigmac:{name:'巨无霸',currentPrice:'25',image:'/assets/bigmac.png'},fries:{name:'中份薯条',currentPrice:'12',image:'/assets/fries.png'}};
 export class MockGateway implements Gateway {

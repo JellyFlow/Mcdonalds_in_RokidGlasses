@@ -1,6 +1,6 @@
-import type {Session,View,Event,Obj,Row} from './types.js';
-import {menuBatch} from './menu.js';
-import {array,money,plain,roundChoices,yuan,takeWayLabel,cancelReasons,orderCancelled,orderPendingPayment,orderDesktopExitAllowed} from './domain.js';
+import type {Session,View,Event,Obj,Row} from '../domain/types.js';
+import {menuBatch} from '../menu/index.js';
+import {array,money,plain,roundChoices,yuan,takeWayLabel,cancelReasons,orderCancelled,orderPendingPayment,orderDesktopExitAllowed} from '../domain/index.js';
 export function view(s:Session):View{
  const batch=s.screen==='menu'?menuBatch(s.meals,s.menuQuery,s.menuBatch):undefined;
  const v:View={id:s.id,revision:s.revision,mode:s.mode,screen:s.screen,title:'麦当劳',summary:'',rows:[],actions:[],caption:s.mode==='mock'?'演示数据 · 不产生真实订单':'真实 MCP · 下单前请确认'};

@@ -6,7 +6,7 @@
 
 [Open the “真机同步 · 1.5.52” Figma page](https://www.figma.com/design/SdkRT16rRIyzNJpWggXW4I/?node-id=309-3333). [Start the core-flow prototype](https://www.figma.com/proto/SdkRT16rRIyzNJpWggXW4I/?node-id=309-3334&starting-point-node-id=309%3A3334).
 
-The editable page follows the dimensions and styles of the 1.5.52 source. A separate “真机对照 · 1.5.52” page (node-id=311-3799) contains the verified 480 × 352 Ink Mock reference screens, so visual comparison is exact even when Figma text rendering differs. The original three pages remain intact. Text, vector icons, cards and button instances remain editable; the design is not a flattened screenshot placed in a frame.
+The editable page follows the dimensions and styles of the 1.5.52 source. This pass rechecked and updated the first three pages: “01 · 可编辑画面”, “02 · 组件与样式” and “03 · 流程总览”. A separate “真机对照 · 1.5.52” page (node-id=311-3799) contains the verified 480 × 352 Ink Mock reference screens, so visual comparison is exact even when Figma text rendering differs. Existing pages remain intact. Text, vector icons, cards and button instances remain editable; the design is not a flattened screenshot placed in a frame.
 
 **This overview is exported from a Figma design, not captured from glasses.** Restaurant names, order IDs and price combinations are fictional design samples. Voice actions are described by annotations; prototype clicks simulate navigation only and do not perform recognition, payment or business submissions.
 
@@ -24,7 +24,7 @@ Headings and hints stay above independently scrolling lists. Names and prices ha
 
 | Figma screen | Alignment target | Runtime reference |
 | --- | --- | --- |
-| Home | Brand, example phrase and three existing bottom actions; no microphone button | [Historical device capture, 1.5.46](images/home-device.png) |
+| Menu home | “选点喜欢的”, pickup mode, three meal cards, prices and first-item focus | [Current menu home reference, 480 × 352](images/home-menu-device.png) |
 | Fulfillment | Hint below the heading and two pickup/delivery cards | [New 1.5.52 Mock run](images/fulfillment-mock.png) |
 | Restaurants | Numbering, full address, scrolling and listening hint | [New 1.5.52 Mock run](images/stores-mock.png) |
 | Menu | Batch label, numbered 80px short cards, separate price column and batch action | [Isolated Ink / Mock](images/menu-mock.png) |
@@ -48,4 +48,4 @@ No on-canvas Back button is added. Physical desktop exit still lacks an unambigu
 
 ## Publication and verification
 
-Device captures, Mock runs and designs identify their sources and versions separately. Public material contains no real account, address, order ID or connection credentials. Brand and asset rights remain separate from the code license: see [third-party notices (Chinese)](../THIRD_PARTY_NOTICES.md), [verification (Chinese)](VERIFICATION.md) and [provenance (Chinese)](PROVENANCE.md).
+Device captures, Mock runs and designs identify their sources and versions separately. Public material contains no real account, address, order ID or connection credentials. Brand and asset rights remain separate from the code license: see [third-party notices (Chinese)](../THIRD_PARTY_NOTICES.md), [verification (Chinese)](verification/VERIFICATION.md) and [provenance (Chinese)](PROVENANCE.md).

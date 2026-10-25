@@ -1,10 +1,10 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {parseOrderIntent,exactRequestedMeals} from '../../shared/order-intent.js';
-import {Service} from '../../shared/service.js';
-import {DeviceStore} from '../../device/storage.js';
-import {MockGateway} from '../src/mock.js';
-import type {Event} from '../../shared/types.js';
+import {parseOrderIntent,exactRequestedMeals} from '../../shared/order/index.js';
+import {Service} from '../../shared/contracts/service.js';
+import {DeviceStore} from '../../device/storage/store.js';
+import {MockGateway} from '../mock/index.js';
+import type {Event} from '../../shared/domain/types.js';
 function setup(){const data=new Map<string,any>(),storage={getStorageSync:(k:string)=>data.get(k),setStorageSync:(k:string,v:any)=>data.set(k,structuredClone(v))};const db=new DeviceStore(storage),gateway=new MockGateway(),service=new Service(db,gateway);let state=service.create();return {db,gateway,service,storage,get state(){return state;},async send(e:Event){return state=await service.event(state.id,{...e,revision:state.revision});}};}
 async function store(t:ReturnType<typeof setup>){await t.send({type:'search-stores',value:'上海市 人民广场'});await t.send({type:'store',id:'12345'});}
 test('extract only spoken products/counts and explicit fulfillment, never treat packing as pickup',()=>{

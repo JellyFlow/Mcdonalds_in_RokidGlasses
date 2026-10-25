@@ -5,7 +5,7 @@
 2026-10-24完成公开源码版验证：189项业务与Page测试、3项本地配置测试全部通过；类型检查、文档及图片路径、公开文件凭证与措辞检查通过。配置测试覆盖缺失/占位凭证拒绝、稳定独立身份及显式Mock配置。
 
 - 独立Git历史干净检出：npm ci、build:device、validate、configure:mock、pack及实际Ink回归166/166均通过。
-- 实际Ink 0.18.0隔离回归：166/166通过，详见[key-voice-verification.json](key-voice-verification.json)。网关与识别文本为Mock，关闭请求被拦截。
+- 实际Ink 0.18.0隔离回归：166/166通过，详见本地运行 `npm run verify:ink` 后会在此目录生成 `key-voice-verification.json`（该报告默认不纳入公开源码）。网关与识别文本为Mock，关闭请求被拦截。
 - 本地Mock凭证包构建成功，aix show/list检查通过；不上传AIX或安装到作者设备。
 - npm audit：0项已知漏洞（检查时的锁文件与漏洞库）。
 - 官方声明与官方仓库文件逐字节一致；公开文件不含原账号凭证及设备身份，精选图片已人工复核并脱敏。扫描器负向对照确认：伪私钥模式和旧AIX文件均会拒绝发布。

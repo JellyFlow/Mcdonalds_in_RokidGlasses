@@ -15,7 +15,7 @@
 
 本项目为独立开发的参赛作品，**非麦当劳或 Rokid 官方产品**。餐品、库存、价格与优惠可用性以官方实时响应为准。
 
-**快速导航：** [界面演示](#界面演示) · [快速开始](#快速开始) · [语音示例](#语音示例) · [架构](#架构与技术栈) · [MCP 接入](MCP_INTEGRATION.md) · [验证与限制](docs/VERIFICATION.md) · [参赛声明](CONTEST_DECLARATION.md)
+**快速导航：** [界面演示](#界面演示) · [快速开始](#快速开始) · [语音示例](#语音示例) · [架构](#架构与技术栈) · [MCP 接入](MCP_INTEGRATION.md) · [验证与限制](docs/verification/VERIFICATION.md) · [参赛声明](CONTEST_DECLARATION.md)
 
 ## 为什么把点餐放到眼镜上
 
@@ -55,12 +55,36 @@ GIF 来自本地真机演示窗口，约 19 秒；展示语音点餐、餐品规
 ## 项目文件结构
 
 ```text
-aiui/       Native AIUI Page、页面资源与界面逻辑
-device/     设备运行入口、网关和本地存储
-shared/     业务类型、菜单、订单和视图状态
-server/     MCP 适配与隔离 Mock 服务
-scripts/    配置、构建、打包和 Ink 验证脚本
-docs/       PRD、设计说明、验证记录和公开演示素材
+aiui/
+├── pages/index/index.ink        原生 AIUI 页面入口
+├── components/                  页面布局、控件和展示逻辑
+├── runtime/                     设备 bundle、定位与运行时适配
+├── config/                      配置示例与本地生成凭证
+├── assets/                      品牌、图标和第三方声明
+├── app.js / app.json            AIUI 应用入口配置
+device/
+├── gateway/                     MCP 网关、传输和请求
+├── storage/                     设备存储与提交记录
+├── validation/                  生成的契约校验器
+├── entry.ts                     设备 bundle 入口
+└── test/                        设备与网关测试
+server/
+├── api/                         HTTP 入口
+├── domain/                      服务端领域适配
+├── mock/                        隔离 Mock 网关与 fixture
+├── service/                     Node 服务编排与 MCP 适配
+├── db/                          数据库访问
+├── types/                       服务端类型
+└── test/                        服务端测试
+shared/
+├── domain/                      领域模型、类型与存储契约
+├── menu/                        菜单与餐品匹配
+├── order/                       订单意图
+├── contracts/                   MCP 结果与服务契约
+├── view/                        页面视图状态
+└── platform/                    平台兼容工具
+scripts/                         配置、构建、打包和 Ink 验证
+docs/                           PRD、设计说明、验证记录和公开演示素材
 ```
 
 `local/`、`artifacts/` 和 `node_modules/` 是本地配置或构建目录，不属于公开运行必需文件。
@@ -99,7 +123,7 @@ npm run verify:ink
 
 此命令运行实际 Ink Page，使用原生键事件、Mock 网关及模拟识别文本；**不代表真实麦克风通过**。自动化脚本默认使用 macOS 的 Chrome 路径，需要该浏览器；其他系统需调整脚本中的 Chrome 启动路径。
 
-`configure:mock` 自动生成被 Git 忽略的 `aiui/lib/credentials.js`、`aiui/agent.json` 和 `local/app-identity.json`，无需手动填写凭证。它会覆盖本地连接配置，但保留已有应用身份。
+`configure:mock` 自动生成被 Git 忽略的 `aiui/config/credentials.js`、`aiui/agent.json` 和 `local/app-identity.json`，无需手动填写凭证。它会覆盖本地连接配置，但保留已有应用身份。
 
 **Mock Token 不会自动切换业务网关。** 只有上述 `verify:ink` 路线会在临时 Page 中注入 Mock 网关和模拟识别文本；普通 `preview` 以及直接打包、安装均不能当作隔离 Mock。修改模拟数据的位置及恢复真实配置的方法见[开发文档的 Mock 步骤](docs/DEVELOPMENT.md#隔离-mock-配置步骤)。
 
@@ -135,7 +159,7 @@ npm run install:device
 | 确认页 | 需要餐具 / 堂食 / 修改订单 | 使用真实可用选项，偏好改变使旧报价确认失效 |
 | 确认页 | 确认下单 | 仅提示按确认键，不直接提交 |
 
-方向键移动焦点，确认键激活；录音时 Enter 结束、返回取消。语音“返回”走上一级。订单状态页的物理双击退出属于宿主相关能力，独立真机验收仍待明确确认，详见[验证与限制](docs/VERIFICATION.md)。
+方向键移动焦点，确认键激活；录音时 Enter 结束、返回取消。语音“返回”走上一级。订单状态页的物理双击退出属于宿主相关能力，独立真机验收仍待明确确认，详见[验证与限制](docs/verification/VERIFICATION.md)。
 
 ## 架构与技术栈
 
@@ -163,7 +187,7 @@ flowchart TD
 
 ## 验证与限制
 
-公开版基于原工程1.5.52；原工程已有189项业务与Page测试，本仓库新增公开配置测试。当前实际执行结果及版本范围见[验证记录](docs/VERIFICATION.md)。
+公开版基于原工程1.5.52；原工程已有189项业务与Page测试，本仓库新增公开配置测试。当前实际执行结果及版本范围见[验证记录](docs/verification/VERIFICATION.md)。
 
 - 已有真机证据和佩戴者反馈覆盖部分查询、语音选餐及购物车操作，不等于新账号从安装到下单的完整验收。
 - 原工程“订单状态页双击到系统桌面”尚未取得明确独立验收，不能仅凭 `window.close()` 模拟调用判定通过。

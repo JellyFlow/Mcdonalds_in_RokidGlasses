@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import {mkdtempSync,rmSync,readFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {Store} from '../src/db.js';
-import {Service} from '../src/service.js';
-import {MockGateway} from '../src/mock.js';
-import {context,lineItem,initialDetail,yuan,modification} from '../src/domain.js';
-import {httpServer} from '../src/http.js';
-import type {Event,Obj,View} from '../src/types.js';
+import {Store} from '../db/index.js';
+import {Service} from '../service/index.js';
+import {MockGateway} from '../mock/index.js';
+import {context,lineItem,initialDetail,yuan,modification} from '../domain/index.js';
+import {httpServer} from '../api/http.js';
+import type {Event,Obj,View} from '../types/index.js';
 function setup(path=':memory:'){
  const db=new Store(path),gateway=new MockGateway(),service=new Service(db,gateway);let state=service.create();
  const send=async(e:Event)=>{state=await service.event(state.id,{...e,revision:state.revision});return state;};

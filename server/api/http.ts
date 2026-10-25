@@ -1,7 +1,7 @@
 import {createServer, type IncomingMessage} from 'node:http';
 import {timingSafeEqual} from 'node:crypto';
-import type {Service} from './service.js';
-import {UserError} from './types.js';
+import type {Service} from '../service/index.js';
+import {UserError} from '../types/index.js';
 async function body(req:IncomingMessage){let text='';for await(const chunk of req){text+=chunk;if(text.length>65536)throw new UserError('请求过大。',413);}try{return JSON.parse(text||'{}');}catch{throw new UserError('请求内容格式无效。');}}
 export function httpServer(service:Service,key:string,extraOrigins:string[]=[]){
  if(key.length<20)throw new Error('APP_ACCESS_KEY must contain at least 20 characters');

@@ -7,10 +7,12 @@ server/data/
 local/
 aiui/.aix/
 aiui/agent.json
-aiui/lib/credentials.js
-aiui/lib/device.js
-device/generated/
-docs/device-build.json
+aiui/config/credentials.js
+aiui/runtime/device.js
+device/validation/generated/
+docs/verification/device-build.json
+docs/verification/key-voice-verification.json
+docs/verification/order-status-ink-verification.json
 artifacts/
 *.aix
 *.zip

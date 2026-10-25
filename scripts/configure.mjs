@@ -15,7 +15,7 @@ export function configure(root,env,{mock=false}={}){
  writeFileSync(identityPath,JSON.stringify(identity,null,2)+'\n',{mode:0o600});chmodSync(identityPath,0o600);
  const agent=JSON.parse(readFileSync(join(root,'aiui/agent.example.json'),'utf8'));agent.agentId=identity.agentId;
  writeFileSync(join(root,'aiui/agent.json'),JSON.stringify(agent,null,2)+'\n',{mode:0o600});
- const file=join(root,'aiui/lib/credentials.js');
+ const file=join(root,'aiui/config/credentials.js');
  writeFileSync(file,'export const MCP_TOKEN = '+JSON.stringify(token)+';\nexport const AMAP_WEB_KEY = '+JSON.stringify(mock?'fixture-amap-key':env.AMAP_WEB_KEY||'')+';\n',{mode:0o600});chmodSync(file,0o600);
  return {mock,agentId:identity.agentId};
 }

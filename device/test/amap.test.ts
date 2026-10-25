@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {resolveLocation} from '../../aiui/lib/amap.js';
+import {resolveLocation} from '../../aiui/runtime/amap.js';
 
 test('AMap cancellation rejects pending lookup and ignores late response',async()=>{
  let options:any,aborts=0;
@@ -16,7 +16,7 @@ test('AMap rejects invalid coordinates before sending and incomplete address wit
  await assert.rejects(resolveLocation(api,'fixture-key',121,31).promise,/完整/);assert.equal(calls,2);
 });
 
-import {formatDistance,straightDistance,matchStore,resolveStoreDistances} from '../../aiui/lib/amap.js';
+import {formatDistance,straightDistance,matchStore,resolveStoreDistances} from '../../aiui/runtime/amap.js';
 test('distance formatting uses explicit straight-line meters and kilometers, including zero',()=>{
  assert.equal(formatDistance(0),'直线 0 米');assert.equal(formatDistance(873),'直线 873 米');
  assert.equal(formatDistance(999.9),'直线 999 米');assert.equal(formatDistance(1000),'直线 1.0 公里');assert.equal(formatDistance(1503),'直线 1.5 公里');assert.equal(formatDistance(NaN),'');
@@ -41,7 +41,7 @@ test('distance lookup runs at most two requests and cancellation prevents late u
  lookup.abort();for(const o of queued)o.success({statusCode:200,data:{status:'1',pois:[]}});await lookup.promise;assert.equal(results.length,1);assert.equal(aborts,2);
 });
 
-import {branchName,verifiedNearbyPoi} from '../../aiui/lib/amap.js';
+import {branchName,verifiedNearbyPoi} from '../../aiui/runtime/amap.js';
 test('branch-specific POI matching verifies alternate address against precise geocoding',()=>{
  const store={storeName:'麦当劳杭州余杭IT公园餐厅',address:'文一西路1217号'};
  const poi={id:'it',name:'麦当劳(IT公园店)',cityname:'杭州市',location:'120.1,30.2'};

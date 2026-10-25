@@ -1,8 +1,8 @@
 import {Client} from '@modelcontextprotocol/sdk/client/index.js';
-import {ALLOWED,WRITES,unwrap} from '../shared/mcp-result.js';
-import {UserError,type Gateway,type Obj} from '../shared/types.js';
+import {ALLOWED,WRITES,unwrap} from '../../shared/contracts/mcp-result.js';
+import {UserError,type Gateway,type Obj} from '../../shared/domain/types.js';
 import {InkTransport,type RequestApi} from './transport.js';
-import {contracts,validators,canonical} from './validators.js';
+import {contracts,validators,canonical} from '../validation/validators.js';
 export class DeviceGateway implements Gateway {
  mode='live' as const;private client?:Client;private transport?:InkTransport;private connecting?:Promise<void>;private catalog:Obj[]=[];private nextRead=0;private epoch=0;
  private enabled=new Set<string>();

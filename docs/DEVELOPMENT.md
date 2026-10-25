@@ -6,14 +6,21 @@ Node.js >=22.13；npm。设备构建和预览另需aix CLI，安装另需ADB及�
 
 | 路径 | 职责 |
 | --- | --- |
-| `aiui/pages/index/index.ink` | 原生界面、焦点、语音与生命周期 |
-| `aiui/lib/` | 布局和控件映射，设备业务bundle为本地生成 |
-| `shared/` | 会话状态机、点餐意图、菜单匹配、真实金额和确认保护 |
-| `device/` | 设备MCP网关、传输、存储、静态契约验证器 |
-| `server/src/` | 可选Node HTTP兼容入口和隔离Mock |
+| `aiui/pages/index/index.ink` | 原生 AIUI 页面、焦点、语音与生命周期 |
+| `aiui/components/` | 页面布局、控件和展示逻辑 |
+| `aiui/runtime/` | 设备业务 bundle、定位与运行时适配 |
+| `aiui/config/` | 配置示例；本地凭证由脚本生成且被忽略 |
+| `aiui/assets/` | 品牌、图标和第三方声明 |
+| `shared/domain/` | 会话领域模型、类型和存储契约 |
+| `shared/menu/`、`shared/order/` | 菜单匹配与订单意图 |
+| `shared/contracts/`、`shared/view/` | MCP/服务契约与页面视图状态 |
+| `device/gateway/`、`device/storage/`、`device/validation/` | 设备网关、持久化和静态契约校验 |
+| `server/api/`、`server/service/`、`server/mock/` | HTTP 入口、Node 编排、隔离 Mock |
+| `server/domain/`、`server/db/`、`server/types/` | 服务端领域适配、数据库访问和类型 |
 | `server/test/`、`device/test/` | 业务、状态、布局、语音与按键回归 |
 | `docs/mcp-tool-contracts.json` | 工具契约快照，用于校验，不代表全部工具都实现 |
-| `scripts/` | 本地配置、构建、打包、检查及Ink验证 |
+| `docs/verification/` | 验证说明；设备报告和 Ink JSON 由本地脚本生成并忽略 |
+| `scripts/` | 本地配置、构建、打包、检查及 Ink 验证 |
 
 ## 凭证与身份
 
@@ -30,7 +37,7 @@ npm run build:device
 npm run pack
 ```
 
-`configure`生成被Git忽略的 `aiui/lib/credentials.js`、`aiui/agent.json`和`local/app-identity.json`。配置不打印凭证；本地文件并非已验证硬件加密存储。设备使用打包后的凭证连接官方MCP，因此个人AIX也必须保密。
+`configure`生成被Git忽略的 `aiui/config/credentials.js`、`aiui/agent.json`和`local/app-identity.json`。配置不打印凭证；本地文件并非已验证硬件加密存储。设备使用打包后的凭证连接官方MCP，因此个人AIX也必须保密。
 
 首次配置生成独立身份；再次配置保留身份。不要删除 `local/app-identity.json` 来做普通升级，不要复用作者的私人身份或设备数据。`--mock`显式生成测试占位值，只用于隔离验证；普通预览不会自动把生产网关改成Mock。
 
@@ -67,15 +74,15 @@ npm test
 npm run verify:ink
 ```
 
-1. `configure:mock` 调用 `scripts/configure.mjs --mock`，自动生成测试占位配置，无需手动编辑凭证文件。它会覆盖 `aiui/lib/credentials.js` 和 `aiui/agent.json`，首次创建 `local/app-identity.json`，再次执行保留已有身份。这些文件均被 Git 忽略，不应提交。
+1. `configure:mock` 调用 `scripts/configure.mjs --mock`，自动生成测试占位配置，无需手动编辑凭证文件。它会覆盖 `aiui/config/credentials.js` 和 `aiui/agent.json`，首次创建 `local/app-identity.json`，再次执行保留已有身份。这些文件均被 Git 忽略，不应提交。
 2. `build:device` 生成设备业务 bundle 及契约校验代码；`npm test` 运行隔离业务、Page 和本地配置测试。
-3. `verify:ink` 在临时目录复制 Page，注入 Mock 网关、模拟识别文本和测试场景，再运行实际 Ink 交互检查。原应用 Page 不会因此改为 Mock。截图写入被忽略的 `artifacts/verification/`，结果报告写入 `docs/key-voice-verification.json`；报告是跟踪文件，提交前应核对内容。
+3. `verify:ink` 在临时目录复制 Page，注入 Mock 网关、模拟识别文本和测试场景，再运行实际 Ink 交互检查。原应用 Page 不会因此改为 Mock。截图写入被忽略的 `artifacts/verification/`，结果报告写入 `docs/verification/key-voice-verification.json`；该生成报告默认被 Git 忽略，仅用于本地核对。
 
 ### 在哪些文件中修改模拟数据
 
 | 文件 | 修改内容 |
 | --- | --- |
-| `server/src/mock.ts` | 基础 `MockGateway` 返回数据及隔离业务状态，供测试与 Node Mock 服务复用 |
+| `server/mock/index.ts` | 基础 `MockGateway` 返回数据及隔离业务状态，供测试与 Node Mock 服务复用 |
 | `scripts/verify-ink-controls.mjs` | Ink 专项数据覆盖、模拟语音文本、按键流程及断言；部分门店、菜单、订单和优惠券数据会覆盖基础网关结果 |
 | `scripts/configure.mjs` | 本地配置生成逻辑；通常直接使用命令，无需更改 |
 

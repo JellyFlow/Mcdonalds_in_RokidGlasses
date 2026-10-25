@@ -1,9 +1,9 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {Service} from '../../shared/service.js';
-import {DeviceStore} from '../../device/storage.js';
-import {MockGateway} from '../src/mock.js';
-import type {Event} from '../../shared/types.js';
+import {Service} from '../../shared/contracts/service.js';
+import {DeviceStore} from '../../device/storage/store.js';
+import {MockGateway} from '../mock/index.js';
+import type {Event} from '../../shared/domain/types.js';
 async function cart(){
  const data=new Map<string,any>(),storage={getStorageSync:(k:string)=>data.get(k),setStorageSync:(k:string,v:any)=>data.set(k,structuredClone(v))};const db=new DeviceStore(storage),gateway=new MockGateway(),service=new Service(db,gateway);let state=service.create();
  const t={db,gateway,service,storage,get state(){return state;},async send(e:Event){return state=await service.event(state.id,{...e,revision:state.revision});}};

@@ -1,5 +1,5 @@
 import {decode} from '@toon-format/toon';
-import {UserError,type Obj} from './types.js';
+import {UserError,type Obj} from '../domain/types.js';
 export const ALLOWED = new Set(['now-time-info','list-nutrition-foods','delivery-query-addresses','delivery-create-address','delivery-query-stores','query-nearby-stores','query-store-coupons','query-meals','query-meal-detail','calculate-price','create-order','cancel-order','query-order','order-list','campaign-calendar','available-coupons','auto-bind-coupons','query-my-coupons','query-my-account']);
 export const WRITES = new Set(['cancel-order','create-order','delivery-create-address','auto-bind-coupons']);
 export function unwrap(result: any): any {

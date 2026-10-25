@@ -1,7 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import type { Session } from './types.js';
+import type { Session } from '../types/index.js';
 export class Store {
  db:DatabaseSync;
  constructor(path:string){

@@ -1,4 +1,4 @@
-import {UserError} from './types.js';
+import {UserError} from '../domain/types.js';
 export interface OrderRequest {query:string;quantity:number}
 export interface OrderIntent {items:OrderRequest[];fulfillment?:'pickup'|'delivery'}
 export interface OrderDraft extends OrderIntent {index:number;selectedCode?:string;selectionQuantity?:number}
